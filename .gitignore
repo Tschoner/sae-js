@@ -6,5 +6,10 @@ secret.js
 node_modules
 dist
 
-.DS_Store
+
 src/le01/scripts/secret.js
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
