@@ -6,14 +6,16 @@ console.log('script1.js loaded');
 // console.log(c); // undefined
 //
 //
-// let a = 1;
-// const b = 2;
-// var c = 3;
-//
-//
-// a = 5;
-// // b = 10; // Error
-// c = 15;
+let a = 1;
+const b = 2;
+var c = 3;
+
+
+a = 5;
+b = 10; // Error
+c = 15;
+
+
 
 
 // functions
