@@ -66,15 +66,35 @@
 // }
 
 
-// const heading = document.getElementById('h-target');
-// const button = document.getElementById('btn-change-color');
-// heading.addEventListener('click', () => {
-//     heading.style.color = '#' + Math.floor(Math.random()*16777215).toString(16);
-// });
-//
-// button.addEventListener('mouseover', () => {
-//     console.log(window.width + " - enter ")
-//     button.style.marginTop = (window.screen.width / 2) * Math.random() + 'px'
-//     button.style.marginLeft = (window.screen.width) / 2 * Math.random() + 'px'
-// });
+const heading = document.getElementById('h-target');
+const button = document.getElementById('btn-change-color');
+heading.addEventListener('click', () => {
+    heading.style.color = '#' + Math.floor(Math.random()*16777215).toString(16);
+});
 
+button.addEventListener('mouseover', () => {
+    console.log(window.width + " - enter ")
+    button.style.marginTop = (window.screen.width / 2) * Math.random() + 'px'
+    button.style.marginLeft = (window.screen.width) / 2 * Math.random() + 'px'
+});
+
+// const car = {
+//     brand: "Ford",
+//     model: "Mustang",
+//     year: 1969
+// };
+//
+// for (const prop in car) {
+//     console.log(`${prop}: ${car[prop]}`);
+// }
+//
+// console.log('----------------')
+// Object.prototype.extendedMethod = function() {};
+// const car2 = {
+//     brand: "Ford",
+//     model: "Mustang",
+//     year: 1969
+// };
+// for (const prop in car2) {
+//     console.log(`${prop}: ${car[prop]}`);
+// }
