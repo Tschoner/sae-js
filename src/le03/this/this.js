@@ -12,11 +12,16 @@ const arrowFunc = () => {
     console.log('Arrow function this value', this === window); // true
 };
 
+function name() {
+    console.log('Function function this value', this === window); // true
+}
+
 function myFunc() {
     console.log('Function this value', this === window); // true
 }
 
 
+name();
 arrowFunc();
 myFunc();
 
@@ -25,6 +30,7 @@ function showThis() {
     'use strict';
     return this;
 }
+
 function showThis2() {
     return this;
 }

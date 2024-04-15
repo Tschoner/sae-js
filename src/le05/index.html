@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <script src="./le05.js" defer></script>
+</head>
+<body>
+<h1>LE04</h1>
+<h2 id="student-title">Student: </h2>
+<h3>Finished courses:</h3>
+<div id="grades" class="container">
+
+</div>
+<h3>Negative courses:</h3>
+<div id="negative-grades" class="container">
+
+</div>
+<div style="margin-top: 30px;">
+    <form id="course-form">
+        <label for="course-name">Course Name:</label>
+        <input type="text" id="course-name" required>
+        <label for="course-grade">Course Grade:</label>
+        <input type="number" id="course-grade" min="-1" max="5" required>
+        <button type="submit">Add Course</button>
+    </form>
+</div>
+</body>
+</html>
