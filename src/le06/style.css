@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+#course-form {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    margin-bottom: 20px;
+}
+
+#course-form label {
+    margin-bottom: 5px;
+}
+
+#course-form input {
+    margin-bottom: 10px;
+}
+
+#course-form button {
+    cursor: pointer;
+}
