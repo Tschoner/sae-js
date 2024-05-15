@@ -6,6 +6,7 @@ secret.js
 node_modules
 dist
 
+.parcel-cache
 
 src/le01/scripts/secret.js
 # OS generated files #
