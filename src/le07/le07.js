@@ -1,105 +1,91 @@
-const inputElement = document.getElementById('query-field');
-const resultElement = document.getElementById('results');
-const searchButton = document.getElementById('search-button');
+const tempData = [];
 
-searchButton.addEventListener('click', search);
-
-function renderData(data) {
-    if (data.docs)
-        data.docs.forEach((doc) => {
-            const htmlDivElement = document.createElement('div');
-            const titleElement = document.createElement('h3');
-            titleElement.innerText = doc.title;
-            const listElement = document.createElement('ul');
-            doc.author_name.forEach((author) => {
-                const element = document.createElement('li');
-                element.innerText = author;
-                listElement.append(element);
-            })
-
-            htmlDivElement.append(titleElement)
-            htmlDivElement.append(listElement)
-            resultElement.append(htmlDivElement);
-        });
+for (let i = 0; i < 30; i++) {
+    tempData.push(-10 + Math.floor(Math.random()*45));
 }
+let min = 0, max = 0, avg = 0, belowZero;
+tempData.forEach(i => {
+    min = Math.min(min, i);
+    max = Math.max(max, i);
+    avg += i;
+    avg += i;
+});
+avg = avg/tempData.length;
+console.log(tempData)
+console.log('Min ' + min);
+console.log('Max' + max);
+console.log('Avg' + avg);
+console.log('Median ' + tempData.sort()[Math.floor(tempData.length/2)])
 
-function searchBooks(query) {
-    const url = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`;
 
-    // Senden einer GET-Anfrage an die API
-    fetch(url)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Netzwerkantwort war nicht ok');
-            }
-            return response.json(); // Parsen der JSON-Antwort
-        })
-        .then(data => {
-            renderData(data);
+const catFact = document.getElementById('cat-fact');
+
+// async function getCatFact() {
+//     try {
+//         const response = await fetch('httphs://catfact.ninja/fact');
+//         const jsonResponse = await response.json();
+//         console.log(jsonResponse);
+//         catFact.innerText = jsonResponse.fact;
+//     } catch (e) {
+//         catFact.innerText = 'Error loading cat fact';
+//     }
+// }
+
+
+function getSyncCat() {
+    fetch('https://catfact.ninja/fact')
+        .then(response => response.json())
+        .then(jsonResponse => {
+            console.log(jsonResponse);
+            catFact.innerText = jsonResponse.fact;
         })
         .catch(error => {
-            console.error('Fehler beim Fetchen der Daten:', error);
-        });
-}
-
-
-function search() {
-    const query = inputElement.value;
-    if (query)
-        searchBooks(query);
-}
-
-
-
-
-// Random numbers
-
-function generateRandomNumbers(sum){
-    let x = 0;
-    const result = [];
-    while(x < (sum-5)){
-        result.push(5*Math.random())
-    }
-    const s = result.reduce((a, b) => a+b, 0)
-    result.push(sum-s);
-    return result;
-}
-
-
-
-function readMinMax(randomList) {
-    const min = randomList.reduce((a, b) => Math.min(a, b));
-    let min2 = randomList[0];
-
-    randomList.forEach((x) => {
-        if(min2 > x)
-            min2 = x;
+            catFact.innerText = 'Error loading cat fact';
+        }).finally(() => {
+            console.log('Final finished');
     });
-    const max = randomList.reduce((a, b) => Math.max(a, b));
-    return [min, min2, max]
 }
 
-class Person {
+getSyncCat();
 
-    constructor(name, age){
-        this.name = name;
-        this.age = age
-    }
+// getCatFact().then(() => {
+//     console.log('Cat fact loaded');
+// }).catch((error) => {
+//     console.error('Error loading cat fact', error);
+// })
+
+
+
+const modusData = [];
+
+for (let i = 0; i < 30; i++) {
+    modusData.push(Math.floor(Math.random()*10));
 }
 
+const counter = {};
+let maxCount = 0;
 
-function generatePerson() {
-    return new Person("Person" + Math.random().toString().substring(0, 5), 20+20*Math.random())
-}
+modusData.forEach(i => {
+    const newVar = (counter[i] || 0) + 1;
+    counter[i] = newVar;
+    maxCount = Math.max(maxCount, newVar);
+});
 
-function generateRandomPersonList(n) {
-    const result = []
-    for (let i = 0; i < n; i++) {
-        result.push(generatePerson())
-    }
-    return result;
-}
+const modus = Object.keys(counter).filter(i => counter[i] === maxCount);
+
+let result = [];
+let maxCount2 = counter[modus[0]];
+
+Object.keys(counter).forEach(i => {
+  const count = counter[i];
+  if(count === maxCount2) {
+      result.push(i);
+  } else if(count > maxCount2) {
+      result = [];
+      maxCount2 = count;
+  }
+});
 
 
-console.log(readMinMax([5, 1, -10, 312.3, 23, 5, 1, 231, 8]))
-console.log(JSON.stringify(generateRandomPersonList(5)))
+console.log(`Modus ${modus} of the Array`, modusData, counter);
+console.log(`Modus2 ${result} of the Array`, modusData, counter);
